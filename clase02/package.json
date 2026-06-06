@@ -1,0 +1,23 @@
+{
+  "name": "clase02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "http.js",
+  "scripts": {
+    "start": "node --watch http.js",
+    "dev:3": "node --watch express.js",
+    "lint": "standard"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "17.1.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "dependencies": {
+    "express": "5.2.1"
+  }
+}

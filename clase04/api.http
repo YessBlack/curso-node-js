@@ -1,0 +1,35 @@
+### Recuperar todas las peliculas
+GET http://localhost:3000/movies
+
+### Recuperar una pelicula por su id
+GET http://localhost:3000/movies/17d236d0-6138-11f1-901c-d8b4fedc530c
+### Todas las peliculas de un genero
+GET http://localhost:3000/movies?genre=crime
+
+### Crear una película con POST
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "sql": "SELECT * FROM movie",
+  "title": "The Godfather",
+  "year": 1998,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": [
+    "Crime",
+    "Drama"
+  ]
+}
+
+### Actualizar una película
+PATCH http://localhost:3000/movies/6a2250d32927b196f41fdb49
+Content-Type: application/json
+
+{
+  "year": 2022
+}
+
+### Eliminar una película
+DELETE http://localhost:3000/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
