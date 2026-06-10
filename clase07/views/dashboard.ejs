@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Dashboard | Mi App</title>
+  <%- include('partials/head') %>
+    <style>
+      body {
+        background: var(--bg);
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-brand {
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-brand span {
+        color: var(--primary);
+      }
+
+      .nav-user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      /* MAIN */
+      .main {
+        padding: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .welcome {
+        margin-bottom: 2rem;
+        padding: 1.8rem;
+        background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(255, 101, 132, 0.1));
+        border: 1px solid rgba(108, 99, 255, 0.25);
+        border-radius: var(--radius);
+      }
+
+      .welcome h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .welcome p {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* STATS */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        padding: 1.4rem;
+        border-radius: var(--radius);
+        background: var(--card);
+        border: 1px solid var(--border);
+        text-align: center;
+      }
+
+      .stat-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .stat-label {
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* QUICK ACTIONS */
+      .section-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.78rem;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+    </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-brand">⚡ <span>Mi</span>App</div>
+    <div class="nav-user">
+      <div class="avatar">
+        <%= user ? user.username.charAt(0).toUpperCase() : 'U' %>
+      </div>
+      <span style="font-size:0.9rem; font-weight:500;">
+        <%= user ? user.username : 'Usuario' %>
+      </span>
+      <form action="/logout" method="POST">
+        <button type="submit" class="btn btn-danger" style="padding:8px 18px; font-size:0.85rem; border-radius:8px;">
+          Cerrar sesión
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="main">
+    <div class="welcome">
+      <h1>👋 Hola, <%= user ? user.username : 'Usuario' %>!</h1>
+      <p>Bienvenido de nuevo. Aquí tienes un resumen de tu actividad.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-icon">📁</div>
+        <div class="stat-value">12</div>
+        <div class="stat-label">Proyectos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value">48</div>
+        <div class="stat-label">Tareas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💬</div>
+        <div class="stat-value">7</div>
+        <div class="stat-label">Mensajes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌟</div>
+        <div class="stat-value">98%</div>
+        <div class="stat-label">Rendimiento</div>
+      </div>
+    </div>
+
+    <p class="section-title">Acciones rápidas</p>
+    <div class="actions">
+      <button class="btn btn-primary">+ Nuevo proyecto</button>
+      <button class="btn btn-outline">Ver tareas</button>
+      <button class="btn btn-outline">Mi perfil</button>
+    </div>
+  </div>
+</body>
+
+</html>
